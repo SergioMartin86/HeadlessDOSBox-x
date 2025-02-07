@@ -1,5 +1,6 @@
+/* config.h.  Generated from config.h.in by configure.  */
 /* config.h.in.  Generated from configure.ac by autoheader.  */
-/* Hand-edited by Jonathan Campbell for Visual Studio 2008 */
+
 
 /*
  *  Copyright (C) 2002-2021  The DOSBox Team
@@ -19,107 +20,105 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-/* DOSBox-X currently targets Windows XP or higher. */
-/* TODO: Can we drop this to 0x500 for Windows 2000? */
-/* TODO: What is the minimum appropriate WINVER for HX DOS extender? */
-#ifndef WINVER
-#define WINVER 0x0501
-#endif
-
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0501
-#endif
 
 /* Define if building universal (internal helper macro) */
-#undef AC_APPLE_UNIVERSAL_BUILD
+/* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* Compiling on BSD */
-#undef BSD
+/* #undef BSD */
 
 /* Determines if the compilers supports always_inline attribute. */
-#undef C_ATTRIBUTE_ALWAYS_INLINE
+#define C_ATTRIBUTE_ALWAYS_INLINE 1
 
 /* Determines if the compilers supports fastcall attribute. */
-#undef C_ATTRIBUTE_FASTCALL
+/* #undef C_ATTRIBUTE_FASTCALL */
 
-/* Indicate whether SDL_net is present */
-#define C_SDL_NET 1
+/* Define to 1 to use FFMPEG libavcodec for video capture */
+/* #undef C_AVCODEC */
 
-/* Define to 1 if you have the <d3d9.h> header file. */
-#define HAVE_D3D9_H 1
-
-/* Define to 1 if you want to add Direct3D output to the list of available outputs */
-#define C_DIRECT3D 1
-
-/* Define to 1 to use Direct3D shaders, requires d3d9.h and libd3dx9 */
-#define C_D3DSHADERS 1
-
-/* MT32 (munt) emulation */
-#define C_MT32 1
+/* Define to 1 to use Direct3D shaders */
+/* #undef C_D3DSHADERS */
 
 /* Define to 1 to enable internal debugger, requires libcurses */
 #define C_DEBUG 1
 
-/* Define to 1 if you want parallel passthrough support (Win32, Linux). */
+/* Define to 1 to enable Direct3D 9 display output support */
+/* #undef C_DIRECT3D */
+
+/* Define to 1 if you want parallel pass-through support (Win32, Linux and
+   BSD). */
 #define C_DIRECTLPT 1
 
-/* Define to 1 if you want serial passthrough support (Win32, Posix and OS/2).
-   */
+/* Define to 1 if you want serial pass-through support (Win32, Posix and
+   OS/2). */
 #define C_DIRECTSERIAL 1
 
-#if defined (_M_AMD64)
-/* The type of cpu this target has */
-# define C_TARGETCPU X86_64
-/* Define to 1 to use x86 dynamic cpu core */
-# define C_DYNAMIC_X86 1
-# define C_DYNREC 1
-#elif defined (_M_ARM64) || defined (_M_ARM) /* Microsoft C++ amd64, arm32 and arm64 */
-# undef C_TARGETCPU
-# undef C_DYNAMIC_X86
-# define C_DYNREC 1
-#else
-# define C_TARGETCPU X86
-# define C_DYNAMIC_X86 1
-# define C_DYNREC 1
-#endif
+/* Define to 1 to use x86/x64 dynamic cpu core */
+#define C_DYNAMIC_X86 1
+
+/* Define to 1 to use recompiling cpu core */
+#define C_DYNREC 1
+
+/* Targeting Emscripten */
+/* #undef C_EMSCRIPTEN */
 
 /* Define to 1 to enable libfluidsynth MIDI synthesis */
-#undef C_FLUIDSYNTH
+#define C_FLUIDSYNTH 0
 
 /* Force SDL drawn menus */
-#undef C_FORCE_MENU_SDLDRAW
+/* #undef C_FORCE_MENU_SDLDRAW */
 
 /* Define to 1 to enable floating point emulation */
 #define C_FPU 1
 
 /* Define to 1 to use a x86/x64 assembly fpu core */
-/* FIXME: VS2015 x86_64 will not allow inline asm! */
-#ifdef _M_AMD64 /* Microsoft C++ amd64 */
-//TODO
-#elif defined(_M_ARM64) || defined (_M_ARM) /* Microsoft C++ arm32 and arm64 */
-# undef C_FPU_X86
-#else
-# define C_FPU_X86 1
-#endif
+#define C_FPU_X86 1
 
 /* Define to 1 to enable freetype support */
-#define C_FREETYPE 1
+/* #undef C_FREETYPE */
+
+/* Define to 1 to enable game link headless mode */
+#define C_GAMELINK 1
 
 /* Determines if the compilers supports attributes for structures. */
-#undef C_HAS_ATTRIBUTE
+#define C_HAS_ATTRIBUTE 1
 
 /* Determines if the compilers supports __builtin_expect for branch
    prediction. */
-#undef C_HAS_BUILTIN_EXPECT
+#define C_HAS_BUILTIN_EXPECT 1
+
+/* Define to 1 if you have linux/kvm.h and KVM virtualization */
+#define C_HAVE_LINUX_KVM 1
+
+/* Define to 1 if you have the mach_vm_remap function */
+/* #undef C_HAVE_MACH_VM_REMAP */
+
+/* Define to 1 if you have the memfd_create function */
+#define C_HAVE_MEMFD_CREATE 1
+
+/* Define to 1 if you have the mmap function */
+#define C_HAVE_MMAP 1
 
 /* Define to 1 if you have the mprotect function */
-#undef C_HAVE_MPROTECT
+#define C_HAVE_MPROTECT 1
+
+/* Define to 1 if you have the posix_memalign function */
+#define C_HAVE_POSIX_MEMALIGN 1
 
 /* Define to 1 to enable heavy debugging, also have to enable C_DEBUG */
-#define C_HEAVY_DEBUG 1
+/* #undef C_HEAVY_DEBUG */
+
+/* Targeting HX DOS extender */
+/* #undef C_HX_DOS */
+
+/* Define to 1 to use iconv */
+#define C_ICONV 1
+
+/* Define to 1 to use Win32 functions in iconv backend */
+/* #undef C_ICONV_WIN32 */
 
 /* Define to 1 to enable IPX over Internet networking, requires SDL_net */
-#define C_IPX 1
+#define C_IPX 0
 
 /* Define to 1 if you have libpng */
 #define C_LIBPNG 1
@@ -128,162 +127,179 @@
 #define C_LIBZ 1
 
 /* Define to 1 to enable internal modem support, requires SDL_net */
-#define C_MODEM 1
+#define C_MODEM 0
 
-/* Define to 1 to enable internal printer redirection support*/
-#define C_PRINTER 1
+/* Define to 1 to enable MT32 emulation */
+#define C_MT32 1
 
-/* Define to 1 to enable ethernet passthrough, requires libpcap */
-#define C_PCAP 1
+/* Define to 1 to use opengl display output support */
+#undef C_OPENGL
+
+/* Define to 1 to enable ethernet pass-through, requires libpcap */
+/* #undef C_PCAP */
+
+/* Define to 1 to enable printer emulation */
+/* #undef C_PRINTER */
+
+/* Define to 1 to alter the simpler render scalers to operate only on the full
+   scanline instead of detecting differences. This is a performance adjustment
+   for slow or embedded systems */
+/* #undef C_SCALER_FULL_LINE */
+
+/* Set to 1 to enable SDL 1.x support */
+/* #undef C_SDL1 */
+
+/* Set to 1 to enable SDL 2.x support */
+#define C_SDL2 1
+
+/* Indicate whether SDL_net is present */
+#undef C_SDL_NET
+
+/* Define to 1 if you have setpriority support */
+#define C_SET_PRIORITY 1
 
 /* Define to 1 to enable userspace TCP/IP emulation, requires libslirp */
 /* #undef C_SLIRP */
 
-/* Set to 1 to enable SDL 1.x support */
-#define C_SDL1 1
-
-/* Set to 1 to enable SDL 2.x support */
-/* #undef C_SDL2 */
-
-/* Define to 1 to use opengl display output support */
-#if (defined(__arm__) || defined(__aarch64__) || defined(_M_ARM) || defined(_M_ARM64) || defined(_M_ARM_NT)) && defined(WIN32)
-/* do not define for ARM-based Windows, it doesn't seem to work, and Windows RT does not have it */
-#else
-#  define C_OPENGL 1
-#endif
-
-#ifdef C_SDL2
-/* Define to 1 to enable gamelink support (needs SDL2) */
-#define C_GAMELINK 1
-#endif
-
-/* Set to 1 to enable XBRZ support */
-#define C_XBRZ 1
-
-/* Set to 1 to enable scaler friendly but CPU intensive aspect ratio correction options (post-scalers) for 'surface' output */
-/* Please note that this option includes small part of xBRZ code and uses task group parallelism like xBRZ (batch size is hardcoded here) */
-#define C_SURFACE_POSTRENDER_ASPECT 1
-#define C_SURFACE_POSTRENDER_ASPECT_BATCH_SIZE 16
-
-/* Define to 1 if you have setpriority support */
-#undef C_SET_PRIORITY
-
 /* Define to 1 to enable screenshots, requires libpng */
 #define C_SSHOT 1
 
+/* The type of cpu this target has */
+#define C_TARGETCPU X86_64
+
 /* Define to 1 to use a unaligned memory access */
-#define C_UNALIGNED_MEMORY		1
+#define C_UNALIGNED_MEMORY 1
+
+/* define to 1 to enable X11 support */
+#define C_X11 1
+
+/* define to 1 if XKBrules.h is present */
+/* #undef C_X11_EXT_XKBRULES */
 
 /* define to 1 if you have XKBlib.h and X11 lib */
-#undef C_X11_XKB
+#define C_X11_XKB 1
 
-/* libm doesn't include powf */
-#undef DB_HAVE_NO_POWF
+/* define to 1 if XKBfile.h is present */
+/* #undef C_X11_XKBFILE */
+
+/* define to 1 if you have XRandr.h and X11 lib */
+#define C_X11_XRANDR 1
+
+/* Define to 1 to enable XBRZ scaler */
+#define C_XBRZ 1
+
+/* Determines if the function clock_gettime is available. */
+#define DB_HAVE_CLOCK_GETTIME 1
+
+/* libm does not include powf */
+/* #undef DB_HAVE_NO_POWF */
 
 /* struct dirent has d_type */
-#undef DIRENT_HAS_D_TYPE
+#define DIRENT_HAS_D_TYPE 1
 
 /* environ can be included */
-#define ENVIRON_INCLUDED 1
+/* #undef ENVIRON_INCLUDED */
 
 /* environ can be linked */
-#undef ENVIRON_LINKED
+#define ENVIRON_LINKED 1
+
+/* Compiling on Haiku */
+/* #undef HAIKU */
 
 /* Define to 1 to use ALSA for MIDI */
-#undef HAVE_ALSA
+#define HAVE_ALSA 1
 
-/* Define to 1 if you have the <ddraw.h> header file. */
-#if !defined(C_SDL2)
-#define HAVE_DDRAW_H 1
-#endif
+/* Define to 1 to use Direct3D 9 display output support */
+/* #undef HAVE_D3D9_H */
 
 /* Define to 1 if you have the <inttypes.h> header file. */
-#undef HAVE_INTTYPES_H
+#define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the `asound' library (-lasound). */
-#undef HAVE_LIBASOUND
-
-/* Define to 1 if you have the <memory.h> header file. */
-#undef HAVE_MEMORY_H
+#define HAVE_LIBASOUND 1
 
 /* Define to 1 if you have the <netinet/in.h> header file. */
-#undef HAVE_NETINET_IN_H
+#define HAVE_NETINET_IN_H 1
 
 /* Define to 1 if you have the <pwd.h> header file. */
-#undef HAVE_PWD_H
+#define HAVE_PWD_H 1
+
+/* Define to 1 if you have the `realpath' function. */
+#define HAVE_REALPATH 1
 
 /* Define to 1 if you have the <stdint.h> header file. */
-#undef HAVE_STDINT_H
+#define HAVE_STDINT_H 1
+
+/* Define to 1 if you have the <stdio.h> header file. */
+#define HAVE_STDIO_H 1
 
 /* Define to 1 if you have the <stdlib.h> header file. */
-#define HAVE_STDLIB_H		1
+#define HAVE_STDLIB_H 1
 
 /* Define to 1 if you have the <strings.h> header file. */
-#undef HAVE_STRINGS_H
+#define HAVE_STRINGS_H 1
 
 /* Define to 1 if you have the <string.h> header file. */
-#define HAVE_STRING_H		1
+#define HAVE_STRING_H 1
 
 /* Define to 1 if you have the <sys/socket.h> header file. */
-#undef HAVE_SYS_SOCKET_H
+#define HAVE_SYS_SOCKET_H 1
 
-/* Define to 1 if you have the <sys/stat.h>	header file. */
-#define HAVE_SYS_STAT_H		1
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#define HAVE_SYS_STAT_H 1
 
 /* Define to 1 if you have the <sys/types.h> header file. */
-#undef HAVE_SYS_TYPES_H
+#define HAVE_SYS_TYPES_H 1
 
 /* Define to 1 if you have the <unistd.h> header file. */
-#undef HAVE_UNISTD_H
+#define HAVE_UNISTD_H 1
+
+/* Whether iconv uses const char** */
+/* #undef ICONV_CONST_CHAR */
 
 /* Compiling on GNU/Linux */
-#undef LINUX
+#define LINUX 1
 
 /* Compiling on Mac OS X */
-#undef MACOSX
+/* #undef MACOSX */
 
 /* Compiling on OS/2 EMX */
-#undef OS2
+/* #undef OS2 */
+
+/* Name of package */
+#define PACKAGE "dosbox-x"
 
 /* Define to the address where bug reports for this package should be sent. */
+#define PACKAGE_BUGREPORT "https://github.com/joncampbell123/dosbox-x/issues"
 
 /* Define to the full name of this package. */
+#define PACKAGE_NAME "dosbox-x"
 
 /* Define to the full name and version of this package. */
+#define PACKAGE_STRING "dosbox-x 2025.02.01"
 
 /* Define to the one symbol short name of this package. */
+#define PACKAGE_TARNAME "dosbox-x"
 
 /* Define to the home page for this package. */
+#define PACKAGE_URL "https://dosbox-x.com"
 
 /* Define to the version of this package. */
+#define PACKAGE_VERSION "2025.02.01"
 
-/* The size of `int *', as computed by sizeof. */
-#if defined (_M_AMD64) || defined (_M_ARM64) /* Microsoft C++ amd64 and arm64*/
-# define SIZEOF_INT_P				8
-#else
-# define SIZEOF_INT_P				4
-#endif
+/* Compiling on RISC OS */
+/* #undef RISCOS */
 
-/* The size of `unsigned char', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_CHAR		1
-
-/* The size of `unsigned int', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_INT		4
-
-/* The size of `unsigned long', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_LONG		4
-
-/* The size of `unsigned long long', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_LONG_LONG	8
-
-/* The size of `unsigned short', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_SHORT	2
-
-/* Define to 1 if you have the ANSI C header files. */
-#undef STDC_HEADERS
+/* Define to 1 if all of the C90 standard headers exist (not just the ones
+   required in a freestanding environment). This macro is provided for
+   backward compatibility; new code need not use it. */
+#define STDC_HEADERS 1
 
 /* Define to 1 if your <sys/time.h> declares `struct tm'. */
-#undef TM_IN_SYS_TIME
+/* #undef TM_IN_SYS_TIME */
+
+/* Version number of package */
+#define VERSION "2025.02.01"
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */
@@ -293,25 +309,27 @@
 # endif
 #else
 # ifndef WORDS_BIGENDIAN
-#  undef WORDS_BIGENDIAN
+/* #  undef WORDS_BIGENDIAN */
 # endif
 #endif
 
-/* Define to empty if `const' does not conform to ANSI C. */
-#undef const
+/* Number of bits in a file offset, on hosts where this is settable. */
+/* #undef _FILE_OFFSET_BITS */
 
-#ifndef CONST
-#define CONST const
-#endif
+/* Define for large files, on AIX-style hosts. */
+/* #undef _LARGE_FILES */
+
+/* Define to empty if `const' does not conform to ANSI C. */
+/* #undef const */
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
 #ifndef __cplusplus
-#undef inline
+/* #undef inline */
 #endif
 
 /* Define to `unsigned int' if <sys/types.h> does not define. */
-#undef size_t
+/* #undef size_t */
 
 #if C_ATTRIBUTE_ALWAYS_INLINE
 #define INLINE inline __attribute__((always_inline))
@@ -340,69 +358,29 @@
 #endif
 
 
-typedef         double     Real64;
+#if !defined(FLUIDINC)
+#include <cstdint>
 
-#if SIZEOF_UNSIGNED_CHAR != 1
-#  error "sizeof (unsigned char) != 1"
-#else
-  typedef unsigned char Bit8u;
-  typedef   signed char Bit8s;
+typedef uintptr_t Bitu;
+typedef intptr_t Bits;
 #endif
 
-#if SIZEOF_UNSIGNED_SHORT != 2
-#  error "sizeof (unsigned short) != 2"
-#else
-  typedef unsigned short Bit16u;
-  typedef   signed short Bit16s;
-#endif
-
-#if SIZEOF_UNSIGNED_INT == 4
-  typedef unsigned int Bit32u;
-  typedef   signed int Bit32s;
-#elif SIZEOF_UNSIGNED_LONG == 4
-  typedef unsigned long Bit32u;
-  typedef   signed long Bit32s;
-#else
-#  error "can't find sizeof(type) of 4 bytes!"
-#endif
-
-#if SIZEOF_UNSIGNED_LONG == 8
-  typedef unsigned long Bit64u;
-  typedef   signed long Bit64s;
-#elif SIZEOF_UNSIGNED_LONG_LONG == 8
-  typedef unsigned long long Bit64u;
-  typedef   signed long long Bit64s;
-#else
-#  error "can't find data type of 8 bytes"
-#endif
-
-#if SIZEOF_INT_P == 4
-  typedef Bit32u Bitu;
-  typedef Bit32s Bits;
-#else
-  typedef Bit64u Bitu;
-  typedef Bit64s Bits;
-#endif
-
-/* Fuck off MSVC I don't care if some C library functions aren't POSIX compliant --J.C. */
-#if defined(WIN32)
-# pragma warning(disable:4996)
-#endif
 
 /*
   Define HAS_CDIRECTLPT as 1 if C_DIRECTLPT is defined (as 1) *and* parallel
   pass-through is available on the current platform. It is only available on
   x86{_64} with Windows or BSD, and on Linux.
+  We cannot override the value of C_DIRECTLPT, because configure will replace
+  "#undef C_DIRECTLPT" or "#define C_DIRECTLPT 0" with "#define C_DIRECTLPT 1".
 */
 #ifdef C_DIRECTLPT
-#if (defined __i386__ || defined __x86_64__ || defined _M_IX86 || defined _M_X64) && \
-    defined WIN32
+#if ((defined __i386__ || defined __x86_64__ || defined _M_IX86 || defined _M_X64) && \
+     (defined WIN32 || defined BSD || defined __CYGWIN__)) || \
+     /* WIN32 is not defined by default on Cygwin */ \
+    defined LINUX /* Linux, including non-x86 (e.g. Raspberry Pi) */
 #define HAS_CDIRECTLPT 1
 #endif
 #endif // C_DIRECTLPT
 #ifndef HAS_CDIRECTLPT
 #define HAS_CDIRECTLPT 0
 #endif
-
-/* Linux-side configure script will write/rewrite this file so both Windows and Linux builds carry the same information --J.C. */
-#include "config_package.h"

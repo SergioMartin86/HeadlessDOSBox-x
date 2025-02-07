@@ -1,6 +1,6 @@
 project('quickerDOSBox-x','c','cpp',
   version: '1.0.0',
-  default_options : ['cpp_std=c++20', 'default_library=shared', 'buildtype=release'],
+  default_options : ['cpp_std=gnu++17', 'default_library=shared', 'buildtype=release'],
   subproject_dir : 'extern'
 )
 
@@ -27,7 +27,6 @@ if get_option('buildPlayer') == true
     cpp_args            : [ commonCompileArgs, '-DNCURSES' ],
     dependencies        : [ baseDependency,
                             jaffarCommonDependency,
-                            dependency('sdl2',  required : true)
                           ],
     include_directories : include_directories(['source']),
     link_args           : [ '-lncurses' ],
@@ -44,7 +43,7 @@ baseTester = executable('baseTester',
   cpp_args            : [ commonCompileArgs ],
   dependencies        : [ baseDependency,
                           jaffarCommonDependency,
-                          dependency('sdl2',  required : true) ],
+                          ],
 )
 
 # Building tests
