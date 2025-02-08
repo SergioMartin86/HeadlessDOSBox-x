@@ -82,12 +82,6 @@ int main(int argc, char *argv[])
   // Parsing script
   const auto configJs = nlohmann::json::parse(configJsRaw);
 
-  // Getting expected result parameters
-  auto expectedResult = jaffarCommon::json::getObject(configJs, "Expected Result");
-  auto expectedMapNumber   = jaffarCommon::json::getNumber<int>(expectedResult, "Map Number");
-  auto expectedIsLevelExit = jaffarCommon::json::getBoolean(expectedResult, "Is Level Exit");
-  auto expectedIsGameEnd   = jaffarCommon::json::getBoolean(expectedResult, "Is Game End");
-
   // Getting sequence file path
   std::string sequenceFilePath = program.get<std::string>("sequenceFile");
 

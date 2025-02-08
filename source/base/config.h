@@ -28,7 +28,7 @@
 /* #undef BSD */
 
 /* Determines if the compilers supports always_inline attribute. */
-#define C_ATTRIBUTE_ALWAYS_INLINE 1
+/* #undef C_ATTRIBUTE_ALWAYS_INLINE */
 
 /* Determines if the compilers supports fastcall attribute. */
 /* #undef C_ATTRIBUTE_FASTCALL */
@@ -40,7 +40,7 @@
 /* #undef C_D3DSHADERS */
 
 /* Define to 1 to enable internal debugger, requires libcurses */
-#define C_DEBUG 1
+/* #undef C_DEBUG */
 
 /* Define to 1 to enable Direct3D 9 display output support */
 /* #undef C_DIRECT3D */
@@ -85,7 +85,7 @@
 
 /* Determines if the compilers supports __builtin_expect for branch
    prediction. */
-#define C_HAS_BUILTIN_EXPECT 1
+/* #undef C_HAS_BUILTIN_EXPECT */
 
 /* Define to 1 if you have linux/kvm.h and KVM virtualization */
 #define C_HAVE_LINUX_KVM 1
@@ -103,7 +103,7 @@
 #define C_HAVE_MPROTECT 1
 
 /* Define to 1 if you have the posix_memalign function */
-#define C_HAVE_POSIX_MEMALIGN 1
+/* #undef C_HAVE_POSIX_MEMALIGN */
 
 /* Define to 1 to enable heavy debugging, also have to enable C_DEBUG */
 /* #undef C_HEAVY_DEBUG */
@@ -118,22 +118,22 @@
 /* #undef C_ICONV_WIN32 */
 
 /* Define to 1 to enable IPX over Internet networking, requires SDL_net */
-#define C_IPX 0
+/* #undef C_IPX */
 
 /* Define to 1 if you have libpng */
-#define C_LIBPNG 1
+/* #undef C_LIBPNG  */
 
 /* Define to 1 if you have libz */
-#define C_LIBZ 1
+/* #undef C_LIBZ */
 
 /* Define to 1 to enable internal modem support, requires SDL_net */
-#define C_MODEM 0
+/* #undef C_MODEM */
 
 /* Define to 1 to enable MT32 emulation */
 #define C_MT32 1
 
 /* Define to 1 to use opengl display output support */
-#undef C_OPENGL
+/* #undef C_OPENGL */
 
 /* Define to 1 to enable ethernet pass-through, requires libpcap */
 /* #undef C_PCAP */
@@ -153,16 +153,16 @@
 #define C_SDL2 1
 
 /* Indicate whether SDL_net is present */
-#undef C_SDL_NET
+/* #undef C_SDL_NET */
 
 /* Define to 1 if you have setpriority support */
-#define C_SET_PRIORITY 1
+/* #undef C_SET_PRIORITY */
 
 /* Define to 1 to enable userspace TCP/IP emulation, requires libslirp */
 /* #undef C_SLIRP */
 
 /* Define to 1 to enable screenshots, requires libpng */
-#define C_SSHOT 1
+/* #undef C_SSHOT */
 
 /* The type of cpu this target has */
 #define C_TARGETCPU X86_64
@@ -171,22 +171,22 @@
 #define C_UNALIGNED_MEMORY 1
 
 /* define to 1 to enable X11 support */
-#define C_X11 1
+/* #define C_X11 */
 
 /* define to 1 if XKBrules.h is present */
 /* #undef C_X11_EXT_XKBRULES */
 
 /* define to 1 if you have XKBlib.h and X11 lib */
-#define C_X11_XKB 1
+/* #undef C_X11_XKB */
 
 /* define to 1 if XKBfile.h is present */
 /* #undef C_X11_XKBFILE */
 
 /* define to 1 if you have XRandr.h and X11 lib */
-#define C_X11_XRANDR 1
+/* #undef C_X11_XRANDR */
 
 /* Define to 1 to enable XBRZ scaler */
-#define C_XBRZ 1
+/* #undef C_XBRZ */
 
 /* Determines if the function clock_gettime is available. */
 #define DB_HAVE_CLOCK_GETTIME 1
@@ -207,7 +207,7 @@
 /* #undef HAIKU */
 
 /* Define to 1 to use ALSA for MIDI */
-#define HAVE_ALSA 1
+/* #undef HAVE_ALSA */
 
 /* Define to 1 to use Direct3D 9 display output support */
 /* #undef HAVE_D3D9_H */

@@ -683,22 +683,19 @@ DOSBoxCompileArgs = [
 	'-Wno-volatile',
 	'-Wno-deprecated-declarations',
 	'-DNDEBUG=1',
-	'-Wno-error=incompatible-pointer-types'
+	'-Wno-error=incompatible-pointer-types',
+	'-Wno-unused-result'
 	]
 
 # DOSBox dependency
 
  DOSBoxDependency = declare_dependency(
   compile_args        : [  DOSBoxCompileArgs  ],
-		link_args        : [ '-lz', '-lpng'],
+		link_args        : [ '-lz'],
   include_directories : include_directories(DOSBoxIncludeDirs),
   sources             : [ DOSBoxSrc ],
   dependencies        : [ 
 			                       dependency('sdl2',  required : true),
-																									 dependency('alsa',  required : true),
-																										dependency('x11',  required : true),
-																										dependency('xrandr',  required : true),
-																										dependency('GL',  required : true),
 																										 ]
  )
 

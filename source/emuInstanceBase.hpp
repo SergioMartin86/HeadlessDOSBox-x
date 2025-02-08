@@ -14,6 +14,8 @@
 #include <SDL.h>
 #endif
 
+extern int _main(int argc, char* argv[]);
+
 namespace jaffar
 {
 
@@ -31,6 +33,10 @@ class EmuInstanceBase
 
   void initialize()
   {
+    int argc = 0;
+    char** argv = nullptr;
+
+    _main(argc, argv);
   }
 
   virtual void advanceState(const jaffar::input_t &input)
