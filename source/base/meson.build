@@ -691,7 +691,7 @@ DOSBoxCompileArgs = [
 
  DOSBoxDependency = declare_dependency(
   compile_args        : [  DOSBoxCompileArgs  ],
-		link_args        : [ '-lz'],
+		link_args        : [ ],
   include_directories : include_directories(DOSBoxIncludeDirs),
   sources             : [ DOSBoxSrc ],
   dependencies        : [ 
