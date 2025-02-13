@@ -696,6 +696,7 @@ DOSBoxCompileArgs = [
   sources             : [ DOSBoxSrc ],
   dependencies        : [ 
 			                       dependency('sdl2',  required : true),
+																										libcoDependency
 																										 ]
  )
 

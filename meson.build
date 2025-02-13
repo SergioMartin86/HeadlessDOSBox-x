@@ -4,6 +4,10 @@ project('quickerDOSBox-x','c','cpp',
   subproject_dir : 'extern'
 )
 
+# Grabbing libco dependency
+libcoSubproject = subproject('libco')
+libcoDependency = libcoSubproject.get_variable('libcoDependency')
+
 # Loading dependencies
 subdir('source')
 

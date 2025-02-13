@@ -9,12 +9,17 @@
 #include <jaffarCommon/serializers/contiguous.hpp>
 #include <jaffarCommon/deserializers/contiguous.hpp>
 #include "inputParser.hpp"
+#include "libco.h"
 
 #ifdef _ENABLE_RENDERING
 #include <SDL.h>
 #endif
 
 extern int _main(int argc, char* argv[]);
+void runMain() { _main(0, nullptr); }
+
+cothread_t _emuCoroutine;
+cothread_t _driverCoroutine;
 
 namespace jaffar
 {
@@ -36,11 +41,17 @@ class EmuInstanceBase
     int argc = 0;
     char** argv = nullptr;
 
-    _main(argc, argv);
+    constexpr size_t stackSize = 4 * 1024 * 1024;
+    _emuCoroutine = co_create(stackSize, runMain);
+    _driverCoroutine = co_active();
+    co_switch(_emuCoroutine);
+    // _main(argc, argv);
   }
 
   virtual void advanceState(const jaffar::input_t &input)
   {
+    // Returning to emulator thread to run a single frame
+    co_switch(_emuCoroutine);
   }
 
   inline jaffarCommon::hash::hash_t getStateHash() const
