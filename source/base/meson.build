@@ -659,8 +659,6 @@ DOSBoxIncludeDirs = [
 	'core',
 	'core/include',
 	'core/src',
-	'core/vs/sdlnet/linux-host/include/',
-	'core/vs/sdlnet/linux-host/include/SDL',
 	'core/src/hardware/snd_pc98/sound/',
 	'core/src/aviwriter',
 	'core/src/libs/mt32',
@@ -695,9 +693,9 @@ DOSBoxCompileArgs = [
   include_directories : include_directories(DOSBoxIncludeDirs),
   sources             : [ DOSBoxSrc ],
   dependencies        : [ 
-			                       dependency('sdl2',  required : true),
-																										libcoDependency
-																										 ]
+							libcoDependency,
+							SDL2Dependency
+						]
  )
 
 # DOSBox Core Configuration

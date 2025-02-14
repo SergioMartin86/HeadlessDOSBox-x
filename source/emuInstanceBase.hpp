@@ -41,6 +41,10 @@ class EmuInstanceBase
     int argc = 0;
     char** argv = nullptr;
 
+    // Setting dummy drivers for env variables
+    setenv("SDL_VIDEODRIVER", "dummy", 1);
+    setenv("SDL_AUDIODRIVER", "dummy", 1);
+ 
     constexpr size_t stackSize = 4 * 1024 * 1024;
     _emuCoroutine = co_create(stackSize, runMain);
     _driverCoroutine = co_active();

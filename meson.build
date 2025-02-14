@@ -8,6 +8,10 @@ project('quickerDOSBox-x','c','cpp',
 libcoSubproject = subproject('libco')
 libcoDependency = libcoSubproject.get_variable('libcoDependency')
 
+# Grabbing SDL2 dependency
+SDL2Subproject = subproject('SDL2')
+SDL2Dependency = SDL2Subproject.get_variable('SDL2Dependency')
+
 # Loading dependencies
 subdir('source')
 
