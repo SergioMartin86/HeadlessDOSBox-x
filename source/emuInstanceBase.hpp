@@ -21,6 +21,8 @@ void runMain() { _main(0, nullptr); }
 cothread_t _emuCoroutine;
 cothread_t _driverCoroutine;
 
+jaffarCommon::file::MemoryFileDirectory _memFileDirectory; 
+
 namespace jaffar
 {
 
@@ -41,6 +43,21 @@ class EmuInstanceBase
     int argc = 0;
     char** argv = nullptr;
 
+    std::string srcDiskFileName = "disk1.ima";
+    std::string dstDiskFileName = "FloppyDisk0";
+    std::string diskData;
+    jaffarCommon::file::loadStringFromFile(diskData, srcDiskFileName);
+    auto f = _memFileDirectory.fopen(dstDiskFileName, "w");
+    jaffarCommon::file::MemoryFile::fwrite(diskData.data(), diskData.size(), 1, f);
+    _memFileDirectory.fclose(f);
+    
+    f = _memFileDirectory.fopen(dstDiskFileName, "r");
+    uint8_t* buf = (uint8_t*) malloc(diskData.size());
+    jaffarCommon::file::MemoryFile::fread(buf, diskData.size(), 1, f);
+    for (size_t i = 0; i < diskData.size(); i++) if (buf[i] != ((uint8_t*)diskData.data())[i]) JAFFAR_THROW_RUNTIME("Loaded file and mem file differ at %lu (%u vs %u)\n", i, buf[i], ((uint8_t*)diskData.data())[i]);
+    free(buf);
+    _memFileDirectory.fclose(f);
+    
     constexpr size_t stackSize = 4 * 1024 * 1024;
     _emuCoroutine = co_create(stackSize, runMain);
     _driverCoroutine = co_active();

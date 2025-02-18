@@ -659,8 +659,6 @@ DOSBoxIncludeDirs = [
 	'core',
 	'core/include',
 	'core/src',
-	'core/vs/sdlnet/linux-host/include/',
-	'core/vs/sdlnet/linux-host/include/SDL',
 	'core/src/hardware/snd_pc98/sound/',
 	'core/src/aviwriter',
 	'core/src/libs/mt32',

@@ -1,6 +1,6 @@
 project('quickerDOSBox-x','c','cpp',
   version: '1.0.0',
-  default_options : ['cpp_std=gnu++17', 'default_library=shared', 'buildtype=release'],
+  default_options : ['cpp_std=gnu++20', 'default_library=shared', 'buildtype=release'],
   subproject_dir : 'extern'
 )
 
