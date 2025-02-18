@@ -81,6 +81,7 @@ DOSBoxSrc =  [
 	'core/src/ints/bios.cpp',
 	'core/src/ints/int10.cpp',
 	'core/src/ints/bios_memdisk.cpp',
+	'core/src/ints/bios_mem_disk.cpp',
 	'core/src/ints/int10_vesa.cpp',
 	'core/src/ints/int_dosv.cpp',
 	'core/src/ints/int10_vptable.cpp',
