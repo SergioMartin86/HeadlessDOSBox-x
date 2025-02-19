@@ -44,7 +44,7 @@ class EmuInstanceBase
     char** argv = nullptr;
 
     std::string srcDiskFileName = "disk1.ima";
-    std::string dstDiskFileName = "FloppyDisk0";
+    std::string dstDiskFileName = "FloppyDisk0.ima";
     std::string diskData;
     jaffarCommon::file::loadStringFromFile(diskData, srcDiskFileName);
     auto f = _memFileDirectory.fopen(dstDiskFileName, "w");
