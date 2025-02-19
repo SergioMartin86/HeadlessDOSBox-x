@@ -45,9 +45,11 @@ class EmuInstanceBase
 
     std::string srcDiskFileName = "hdd.img";
     std::string dstDiskFileName = "HardDisk0.img";
+    size_t dstDiskSize = 527966208;
     std::string diskData;
     jaffarCommon::file::loadStringFromFile(diskData, srcDiskFileName);
     auto f = _memFileDirectory.fopen(dstDiskFileName, "w");
+    f->resize(dstDiskSize);
     jaffarCommon::file::MemoryFile::fwrite(diskData.data(), diskData.size(), 1, f);
     _memFileDirectory.fclose(f);
     
